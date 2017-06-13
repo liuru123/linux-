@@ -1,0 +1,32 @@
+extern FILE *fopen(_const char *_restrict _filename,_const char *_restrict _modes);
+返回值：   成功 ----FILE 类型的指针
+           失败 ----NULL
+
+其中第一个参数是指定的文件，绝对路径或者是相对路径都可以，第二个参数是打开的模式
+
+extern int fclose(FILE *_stream);
+返回值：   成功 -----0
+		   失败 ------1
+并设置全局变量errno
+
+extern int fcloseall();
+返回值：  成功-----0
+		  失败-----EOF
+并设置全局变量errno
+
+extern int fflush(FILE *_stream);
+如果stream是一个普通的流，则执行的意义是将缓冲区中的内容写回到stream指定的文件
+如果是stdin标准输入流，则是将标准输入流中的数据丢弃
+如果是stdout标准输出流，则是将标准输出流中的数据显示在标准输出设备上
+如果是printf()后有fflush(stdout)则可提高打印效率
+
+extern int fgetc(FILE *_stream);
+extern int getc(FILE *_stream);
+getchar()相当于fgetc(stdin);
+从流中读取一个字符，返回值是读取的字符的ASCII码
+
+extern int fputc(int _c,FILE *_stream);
+extern int putc(int _c,FILE * _stream);
+将字符c写入stream所指向的文件中
+extern int putchar(int _c)相当于fputc(c,stdout);
+
